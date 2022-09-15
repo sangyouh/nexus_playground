@@ -1,0 +1,3 @@
+import "./moduleAliases";
+
+export {};

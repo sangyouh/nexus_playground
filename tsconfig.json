@@ -1,17 +1,12 @@
 {
-    "compilerOptions": {
-      "target": "ES2018",
-      "module": "commonjs",
-      "lib": ["esnext"],
-      "strict": true,
-      "rootDir": ".",
-      "outDir": "dist",
-      "sourceMap": true,
-      "esModuleInterop": true
-    },
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "dev": "ts-node-dev --transpile-only --no-notify api/index.ts",
-        "build": "tsc"
-      }
+  "compilerOptions": {
+    "target": "ES2018",
+    "module": "commonjs",
+    "lib": ["esnext"],
+    "strict": true,
+    "rootDir": ".",
+    "outDir": "dist",
+    "sourceMap": true,
+    "esModuleInterop": true
   }
+}

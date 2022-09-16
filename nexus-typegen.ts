@@ -4,7 +4,7 @@
  */
 
 
-
+import type { Context } from "./api/context"
 
 
 
@@ -28,6 +28,13 @@ export interface NexusGenScalars {
 }
 
 export interface NexusGenObjects {
+  Mutation: {};
+  Post: { // root type
+    body?: string | null; // String
+    id?: number | null; // Int
+    published?: boolean | null; // Boolean
+    title?: string | null; // String
+  }
   Query: {};
 }
 
@@ -42,18 +49,42 @@ export type NexusGenRootTypes = NexusGenObjects
 export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars
 
 export interface NexusGenFieldTypes {
+  Mutation: { // field return type
+    createDraft: NexusGenRootTypes['Post']; // Post!
+  }
+  Post: { // field return type
+    body: string | null; // String
+    id: number | null; // Int
+    published: boolean | null; // Boolean
+    title: string | null; // String
+  }
   Query: { // field return type
-    ok: boolean; // Boolean!
+    drafts: Array<NexusGenRootTypes['Post'] | null>; // [Post]!
   }
 }
 
 export interface NexusGenFieldTypeNames {
+  Mutation: { // field return type name
+    createDraft: 'Post'
+  }
+  Post: { // field return type name
+    body: 'String'
+    id: 'Int'
+    published: 'Boolean'
+    title: 'String'
+  }
   Query: { // field return type name
-    ok: 'Boolean'
+    drafts: 'Post'
   }
 }
 
 export interface NexusGenArgTypes {
+  Mutation: {
+    createDraft: { // args
+      body: string; // String!
+      title: string; // String!
+    }
+  }
 }
 
 export interface NexusGenAbstractTypeMembers {
@@ -87,7 +118,7 @@ export type NexusGenFeaturesConfig = {
 }
 
 export interface NexusGenTypes {
-  context: any;
+  context: Context;
   inputTypes: NexusGenInputs;
   rootTypes: NexusGenRootTypes;
   inputTypeShapes: NexusGenInputs & NexusGenEnums & NexusGenScalars;
